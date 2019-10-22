@@ -1,0 +1,16 @@
+.listItem{
+  margin-bottom: 4px;
+  display: flex;
+  text-align: left;
+}
+
+.itemText{
+  border: 1px solid white;
+  word-break: break-word;
+  flex: 1 1;
+  padding: 10px;
+}
+
+.itemButtons{
+  display: flex;
+}

@@ -1,0 +1,31 @@
+button{
+  padding: 12;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  font-size: 1rem;
+}
+
+button:hover{
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+.redBtn{
+  color: #e74c3c;
+}
+
+.redBtn:hover{
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.blueBtn{
+  color: #3498db;
+}
+
+.blueBtn:hover{
+  background-color: #3498db;
+  border-color: #3498db;
+}
