@@ -1,0 +1,16 @@
+.link{
+  width: 200px;
+  height: 100px;
+  float: left;
+  margin-left: 20px;
+  color: black;
+  text-align: center;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+}
