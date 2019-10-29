@@ -7,7 +7,7 @@ class Item extends Component{
     return(
       <div className="listItem">
         <div className="itemText">
-          Item 1
+          {this.props.itemInfo.text}
         </div>
         <div className="itemButtons">
           <Button btnText="Edit" btnType="blueBtn"/>
