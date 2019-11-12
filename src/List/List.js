@@ -33,6 +33,10 @@ class List extends Component{
     }
   }
 
+  componentDidUpdate(){
+    // console.log('the component has been updated');
+  }
+
   handleChangeInputValue = (text) => {
     let { currentItem } = this.state;
     currentItem.value = text;
@@ -46,12 +50,21 @@ class List extends Component{
   handleSubmit = () => {
     let { allItems, currentItem } = this.state;
 
-    const newItem = {
-      id: allItems.length + 1,
-      text: currentItem.value
-    }
+    if(currentItem.id === null){
+      const newItem = {
+        id: allItems.length + 1,
+        text: currentItem.value
+      }
 
-    allItems.push(newItem);
+      allItems.push(newItem);
+    } else {
+      for (let i = 0; i < allItems.length; i++) {
+        if(allItems[i].id === currentItem.id){
+          allItems[i].text = currentItem.value
+          break;
+        }
+      }
+    }
 
     this.setState({
       currentItem: {
@@ -61,6 +74,42 @@ class List extends Component{
       allItems: allItems
     })
 
+  }
+
+  handleDelete = (idOfItem) => {
+    // console.log('need to delete');
+    // console.log(idOfItem);
+    const { allItems } = this.state;
+    for (let i = 0; i < allItems.length; i++) {
+      if(allItems[i].id === idOfItem){
+        allItems.splice(i, 1);
+        break;
+      }
+    }
+
+    for (let i = 0; i < allItems.length; i++) {
+      allItems[i].id = i + 1
+    }
+    // console.log(allItems);
+
+    this.setState({
+      allItems: allItems
+    })
+
+  }
+
+  handleEdit = (id) => {
+    const { allItems } = this.state;
+    for (let i = 0; i < allItems.length; i++) {
+      if(allItems[i].id === id){
+        this.setState({
+          currentItem: {
+            id: id,
+            value: allItems[i].text
+          }
+        });
+      }
+    }
   }
 
   render(){
@@ -79,6 +128,8 @@ class List extends Component{
               return <Item
                 key={singleItem.id}
                 itemInfo={singleItem}
+                deleteItem={this.handleDelete}
+                editItem={this.handleEdit}
                 />
             })
           }
